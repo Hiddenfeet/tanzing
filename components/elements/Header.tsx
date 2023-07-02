@@ -31,7 +31,7 @@ const Component: React.FC = () => {
       >
         <Link href="/">
           <Text textStyle="logo" cursor="pointer">
-            NFTDrop
+            β Eat NFTDrop Test
           </Text>
         </Link>
         <Flex alignItems="center" gap={8}>
@@ -50,7 +50,7 @@ const Component: React.FC = () => {
                   MINT
                 </Text>
               </Link>
-              <Link href="/collection">
+              {/* <Link href="/collection">
                 <Text
                   as="a"
                   borderBottom={`2px`}
@@ -64,7 +64,7 @@ const Component: React.FC = () => {
                 >
                   COLLECTION
                 </Text>
-              </Link>
+              </Link> */}
               <Link href="/owned">
                 <Text
                   as="a"

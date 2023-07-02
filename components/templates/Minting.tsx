@@ -16,16 +16,9 @@ const Component: React.FC = () => {
   const { connectWallet } = useConnectWallet()
 
   return (
-    <Flex
-      maxW={'8xl'}
-      justifyContent="center"
-      h="100%"
-      alignItems="center"
-      mx="auto"
-    >
       <Fade>
         <VStack spacing={6}>
-          <Box width="240px" height="240px">
+          <Box width="100%" height="">
             <NftImagesSlideShow />
           </Box>
 
@@ -42,7 +35,7 @@ const Component: React.FC = () => {
               </Button>
             )}
             <Text pt={2} fontSize="xs" textAlign={'center'}>
-              {store.claimedSupply} / {store.totalSupply}
+              {store.claimedSupply} / ∞
             </Text>
             <Text pt={2} fontSize="xs" textAlign={'center'}>
               goerli testnet
@@ -50,7 +43,6 @@ const Component: React.FC = () => {
           </div>
         </VStack>
       </Fade>
-    </Flex>
   )
 }
 

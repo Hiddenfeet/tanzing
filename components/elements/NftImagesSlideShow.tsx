@@ -1,44 +1,41 @@
-import { AnimatePresence, motion } from 'framer-motion'
-import { useContext, useEffect, useState } from 'react'
+import { Box, Fade, SimpleGrid } from '@chakra-ui/react'
+import React, { useContext, useEffect, useState } from 'react'
 import { NftContractContext } from '../../contexts/NftContractProvider'
+import { NftListItem } from '../elements/NftListItem'
 
 import { NftImage } from './NftImage'
 
 const Component: React.FC = () => {
   const [allTokens, setAllTokens] = useState<Array<any>>([])
-  const [rand, setRand] = useState<number>(0)
 
   const store = useContext(NftContractContext)
-
-  const token: any | undefined =
-    allTokens && allTokens[Math.floor(rand * allTokens.length)]
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRand(Math.random())
-    }, 3000)
-
-    return () => clearInterval(interval)
-  }, [])
 
   useEffect(() => {
     setAllTokens(store.allTokens)
   }, [store])
 
-  return token ? (
-    <AnimatePresence exitBeforeEnter>
-      <motion.div
-        key={token.metadata.id._hex}
-        initial={{ x: 0, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ x: 0, opacity: 0 }}
-        transition={{ duration: 0.25 }}
-      >
-        <NftImage imageUri={token.metadata.image} />
-      </motion.div>
-    </AnimatePresence>
-  ) : (
-    <></>
+  return (
+    <Box maxW="8xl" mx="auto">
+      <SimpleGrid
+          columns={{
+            base: 2,
+            md: 3,
+            lg: 4,
+            xl: 5,
+            '2xl': 6,
+          }}
+          spacing={{ base: 3, xl: 6 }}
+          py={6}
+        >
+          {allTokens.map((token, index) => {
+            return (
+              <React.Fragment key={index}>
+                <NftListItem token={token} />
+              </React.Fragment>
+            )
+          })}
+      </SimpleGrid>
+    </Box>
   )
 }
 

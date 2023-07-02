@@ -1,4 +1,6 @@
 import { Box, Text } from '@chakra-ui/react'
+import { useContext } from 'react'
+import { NftContractContext } from '../../contexts/NftContractProvider'
 import React from 'react'
 import { NULL_ADDRESS } from '../../utils/const'
 import { NftImage } from './NftImage'
@@ -9,11 +11,17 @@ export type NftListItemProps = {
 }
 
 const Component: React.FC<NftListItemProps> = ({ token }) => {
+  const store = useContext(NftContractContext)
+  const handleClick = () => {
+    store.selectToken(token)
+    console.log('Image was clicked!', store.selectedToken);
+  };
   return (
-    <Box position="relative">
-      <Box opacity={token.owner === NULL_ADDRESS ? 0.2 : 1.0}>
-        <NftImage imageUri={token.metadata.image} />
-      </Box>
+    <Box onClick={handleClick} cursor="pointer" >
+      <Box position="relative">
+      {/* <Box opacity={token.owner === NULL_ADDRESS ? 0.2 : 1.0}> */}
+        <NftImage imageUri={token.metadata.image} tokenId={token.metadata.id} />
+      {/* </Box> */}
       <Text
         as="h4"
         fontSize={{ base: 'sm', md: 'lg' }}
@@ -23,6 +31,7 @@ const Component: React.FC<NftListItemProps> = ({ token }) => {
       >
         {token.metadata.name}
       </Text>
+      </Box>
     </Box>
   )
 }

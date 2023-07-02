@@ -12,11 +12,11 @@ const Component: React.FC = () => {
   const address = useAddress()
 
   useEffect(() => {
-    nftDrop?.claimConditions.getActive().then((activeClaimCondition) => {
+    nftDrop?.claimConditions.getActive().then((activeClaimCondition: any) => {
       setMintPrice(activeClaimCondition.price._hex)
     })
 
-    nftDrop?.getAll().then((results) => {
+    nftDrop?.getAll().then((results: any) => {
       setAllTokens(results)
     })
   }, [nftDrop])

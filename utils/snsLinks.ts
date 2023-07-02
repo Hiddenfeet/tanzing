@@ -41,15 +41,15 @@ export const openseaUrl = () => {
 }
 
 export const twitterUrl = () => {
-  return `https://twitter.com/${process.env.NEXT_PUBLIC_TWITER_ACCOUNT}`
+  return `https://twitter.com/T_Takka925h`
 }
 
 export const instagramUrl = () => {
-  return `https://www.instagram.com/${process.env.NEXT_PUBLIC_INSTAGRAM_ACCOUNT}`
+  return `https://www.instagram.com/t_takka0925/`
 }
 
 export const discordUrl = () => {
-  return `${process.env.NEXT_PUBLIC_DISCORD_URL}`
+  return `https://discord.gg/fkuXxQrUV8`
 }
 
 export const snsLinks = {
